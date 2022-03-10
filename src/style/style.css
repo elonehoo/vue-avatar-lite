@@ -1,0 +1,70 @@
+body {
+  background-color: rgb(237, 242, 245);
+  display: flex;
+  justify-content: center;
+}
+h1 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: rgb(0, 0, 0);
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.card{
+  background: white;
+  padding: 4rem 3rem 2rem 3rem;
+  margin-top: 8rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
+  text-align: center;
+  position: relative;
+}
+
+
+button {
+  background: rgb(0, 0, 0);
+  border: none;
+  color: white;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+#url{
+  font-size: inherit;
+  width: 400px;
+  border: solid 1px #d1d1d1;
+  padding: 0.5rem;
+  border-radius: 4px;
+  text-align: center;
+  color: #666;
+}
+
+.cord{
+  position: absolute;
+  top: -100%;
+  width: 300px;
+  left: calc(50% - 150px);
+  height: 400px;
+}
+
+.avatar{
+  border-radius: 100%;
+}
+
+.logo{
+  margin: 6rem auto 0 auto;
+  display: block;
+}
+
+.github-logo{
+  display: block;
+  width: 1.8rem;
+}
+
+.github-link{
+  margin: 1rem auto 0 auto;
+  display: block;
+  width: 1.8rem;
+}
