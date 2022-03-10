@@ -5,8 +5,9 @@ let props = defineProps({
       type: String,
       required: true,
     },
-    denoColor: {
-      type: String[2],
+    denoColor:{
+      type: Array,
+      default: () => [],
       required: true,
     }
 })

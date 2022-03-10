@@ -5,6 +5,7 @@ import Avatar3 from './components/Avatar3.vue';
 import Avatar4 from './components/Avatar4.vue';
 import { calcChecksum, Random } from "./util/util";
 import {IconProps} from './IconProps'
+import {ref} from 'vue'
 
 const components = [
   Avatar1,
@@ -36,25 +37,28 @@ const denoColors = [
 
 const now = new Date();
 now.setDate(now.getDate() + 14);
+
 const init = {
   headers: [["content-type", "image/svg+xml"], ["Expires", now.toUTCString()], ["Cache-Control", "public, max-age=604800"]],
 };
 
-const Icon = (props: IconProps) => {
-  if (props.seed === undefined) {
-    props.seed = "";
-  }
-  const checksum = calcChecksum(props.seed);
-  const rand = new Random(checksum);
-  const bgColor = bgColors[rand.nextInt(0, bgColors.length - 1)];
-  const denoColor = denoColors[rand.nextInt(0, denoColors.length - 1)];
-  const component = components[rand.nextInt(0, components.length - 1)];
+const rand = ref(new Random(4))
+// const component = rand.value.nextInt(0, components.length - 1)
+const component = ref()
+component.value = 0;
+console.log(component.value)
+// const output = document.getElementById("output")
+const bgColorItem = ref();
+const denoColorItem = ref();
+const getRandom = () => {
+  const random = ref(new Random(10))
+  bgColorItem.value = ref(random.value.nextInt(0, bgColors.length - 1))
+  console.log("bgColorItem->",bgColorItem.value)
+  denoColorItem.value = ref(random.value.nextInt(0, denoColors.length - 1))
+  console.log("denoColorItem->",denoColorItem.value)
+}
 
-  return (
-    component(bgColor, denoColor)
-  );
-};
-
+getRandom()
 
 </script>
 
@@ -62,13 +66,17 @@ const Icon = (props: IconProps) => {
 <div>
   <div class="card">
     <img class="cord" src="./assets/cord.svg" alt="cord">
-    <img class="avatar" id="output" src="" alt="avatar" width="150" />
+    <Avatar1 class="avatar" v-if="component === 0" :bgColor="bgColors[bgColorItem]" :denoColor="denoColors[denoColorItem]" />
+    <Avatar2 class="avatar" v-if="component === 1" :bgColor="bgColors[bgColorItem]" :denoColor="denoColors[denoColorItem]" />
+    <Avatar3 class="avatar" v-if="component === 2" :bgColor="bgColors[bgColorItem]" :denoColor="denoColors[denoColorItem]" />
+    <Avatar4 class="avatar" v-if="component === 3" :bgColor="bgColors[bgColorItem]" :denoColor="denoColors[denoColorItem]" />
     <p>
-      <button onclick="getRandom()">Get Random</button>
+      <button @click="getRandom()">Get Random</button>
     </p>
     <div>
-      <input title="Copy URL from here" type="text" id="url">
+      <input value="Can generate random cute avatars" title="Copy URL from here" type="text" id="url">
     </div>
+    
   </div>
 
   <!-- <img class="logo" src="./assets/logo.svg" alt="Deno Avatar Logo"> -->

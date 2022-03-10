@@ -6,7 +6,7 @@ let props = defineProps({
       required: true,
     },
     denoColor: {
-      type: String[2],
+      type: String[100],
       required: true,
     }
 })
