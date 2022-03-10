@@ -1,4 +1,15 @@
 <script setup lang="ts">
+import { toRefs, computed } from "vue";
+let props = defineProps({
+    bgColor:{
+      type: String,
+      required: true,
+    },
+    denoColor: {
+      type: String[2],
+      required: true,
+    }
+})
 </script>
 
 <template>
@@ -10,7 +21,7 @@
     >
       <title>Deno Avatar</title>
       <g>
-        <rect width="112" height="112" fill={bgColor} />
+        <rect width="112" height="112" :fill="bgColor" />
         <path
           d="M77.4624 78.9593C78.2802 68.3428 73.7143 58.8833 71.3291 55.4806L87.6847 48.335C92.5913 49.9683 94.1587 65.6887 94.3291 73.3448C94.3291 73.3448 90.7513 73.8552 88.7069 75.3864C86.6219 76.948 83.0847 80.4905 77.4624 78.9593Z"
           fill="white"
@@ -22,19 +33,19 @@
           fill="#B1DEFF" />
         <path
           d="M7.06239 52.159C-5.55748 54.1782 -12.682 66.0659 -17.661 73.2769C-18.5194 86.6687 -18.2791 114.379 -10.45 118.088C-2.62094 121.797 16.5053 119.633 25.0898 118.088V122.209C26.4634 122.724 30.1375 123.857 33.846 124.269C37.5545 124.681 40.542 123.067 41.5721 122.209V112.422C42.0872 112.079 44.5595 110.465 50.3283 106.756C57.5393 102.121 61.6598 90.274 60.1146 82.0331C58.9557 75.8521 63.7201 63.4904 66.2955 55.2493C76.0818 57.3094 88.4435 54.2192 89.4736 40.3124C90.1205 31.5801 80.7174 19.9868 63.2051 25.3752C45.6927 30.7636 48.268 52.159 41.5721 59.37C35.3913 53.1891 23.5446 49.5219 7.06239 52.159Z"
-          fill={denoColor[0]}
-          stroke={denoColor[2]}
+          :fill="denoColor[0]"
+          :stroke="denoColor[2]"
           stroke-width="3"
           stroke-linecap="round" />
         <path
           d="M66.2955 55.2493C64.5786 54.7342 60.9387 53.6011 60.1146 53.189"
-          stroke={denoColor[1]}
+          :stroke="denoColor[1]"
           stroke-opacity="0.37"
           stroke-width="3"
           stroke-linecap="round" />
         <path
           d="M41.5721 59.3698C40.8853 60.2283 38.8937 62.1512 36.4214 62.9753"
-          stroke={denoColor[1]}
+          :stroke="denoColor[1]"
           stroke-opacity="0.37"
           stroke-width="3"
           stroke-linecap="round" />
