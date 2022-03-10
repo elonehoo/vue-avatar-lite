@@ -69,7 +69,7 @@ function random(){
   </div>
 
   <!-- <img class="logo" src="./assets/logo.svg" alt="Deno Avatar Logo"> -->
-  <a href="https://github.com/hashrock/deno-avatar" class="github-link">
+  <a href="https://github.com/xiaoxunyao/vue-avatar-lite" class="github-link">
     <img class="github-logo" src="./assets/github.svg" alt="GitHub Repo">
   </a>
 </div>
