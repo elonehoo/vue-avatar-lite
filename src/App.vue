@@ -35,31 +35,20 @@ const denoColors = [
   ["#ddd6fe", "#7c3aed", "#4c1d95"],
 ];
 
-const now = new Date();
-now.setDate(now.getDate() + 14);
-
-const init = {
-  headers: [["content-type", "image/svg+xml"], ["Expires", now.toUTCString()], ["Cache-Control", "public, max-age=604800"]],
-};
-
-const rand = ref(new Random(4))
-// const component = rand.value.nextInt(0, components.length - 1)
 const component = ref()
-component.value = 0;
-console.log(component.value)
-// const output = document.getElementById("output")
-const bgColorItem = ref();
-const denoColorItem = ref();
-const getRandom = () => {
-  const random = ref(new Random(10))
-  bgColorItem.value = ref(random.value.nextInt(0, bgColors.length - 1))
-  console.log("bgColorItem->",bgColorItem.value)
-  denoColorItem.value = ref(random.value.nextInt(0, denoColors.length - 1))
-  console.log("denoColorItem->",denoColorItem.value)
+component.value = Math.floor(Math.random() * 4);
+
+const bgColorItem = ref()
+bgColorItem.value = Math.floor(Math.random() * bgColors.length);
+
+const denoColorItem = ref()
+denoColorItem.value = Math.floor(Math.random() * denoColors.length);
+
+function random(){
+  component.value = Math.floor(Math.random() * 4);
+  bgColorItem.value = Math.floor(Math.random() * bgColors.length);
+  denoColorItem.value = Math.floor(Math.random() * denoColors.length);
 }
-
-getRandom()
-
 </script>
 
 <template>
@@ -71,10 +60,10 @@ getRandom()
     <Avatar3 class="avatar" v-if="component === 2" :bgColor="bgColors[bgColorItem]" :denoColor="denoColors[denoColorItem]" />
     <Avatar4 class="avatar" v-if="component === 3" :bgColor="bgColors[bgColorItem]" :denoColor="denoColors[denoColorItem]" />
     <p>
-      <button @click="getRandom()">Get Random</button>
+      <button @click="random()">Get Random</button>
     </p>
     <div>
-      <input value="Can generate random cute avatars" title="Copy URL from here" type="text" id="url">
+      <input value="Can generate random cute avatars" type="text" id="url">
     </div>
     
   </div>
